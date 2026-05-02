@@ -1,4 +1,4 @@
-package com.deccan.config;
+package com.deccan.address.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

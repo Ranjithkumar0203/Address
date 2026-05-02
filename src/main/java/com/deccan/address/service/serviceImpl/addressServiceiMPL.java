@@ -1,14 +1,14 @@
-package com.deccan.service.serviceImpl;
+package com.deccan.address.service.serviceImpl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.deccan.dao.addressEntity;
-import com.deccan.dto.addressDTO;
-import com.deccan.entity.address;
-import com.deccan.model.addressList;
-import com.deccan.service.addressService;
+import com.deccan.address.dao.addressEntity;
+import com.deccan.address.dto.addressDTO;
+import com.deccan.address.entity.address;
+import com.deccan.address.model.addressList;
+import com.deccan.address.service.addressService;
 
 
 @Service

@@ -1,4 +1,4 @@
-package com.deccan.model;
+package com.deccan.address.model;
 
 import java.util.ArrayList;
 import java.util.List;

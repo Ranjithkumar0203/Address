@@ -1,16 +1,15 @@
-package com.deccan.controller;
+package com.deccan.address.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.deccan.dao.addressEntity;
-import com.deccan.dto.addressDTO;
-import com.deccan.model.addressList;
-import com.deccan.service.serviceImpl.addressServiceiMPL;
+import com.deccan.address.dto.addressDTO;
+import com.deccan.address.entity.address;
+import com.deccan.address.model.addressList;
+import com.deccan.address.service.serviceImpl.addressServiceiMPL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,14 +20,14 @@ public class addressController {
     @Autowired
     public addressServiceiMPL _addressServiceiMPL;
 
-    @GetMapping("/")
+    @GetMapping()
     public String Hello() {
         return "Hi Hello";
     }
 
     @PostMapping("/save")
-    public addressList saveAddress(@RequestBody addressDTO _addressDTO) {
-        addressList addresslist = _addressServiceiMPL.saveAddressList(_addressDTO);
+    public addressList saveAddress(@RequestBody addressDTO _addressDto) {
+        addressList addresslist = _addressServiceiMPL.saveAddressList(_addressDto);
         return addresslist;
     }
 
