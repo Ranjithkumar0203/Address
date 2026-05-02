@@ -7,6 +7,6 @@ import com.deccan.address.model.addressList;
 
 public interface addressService {
 
-    addressList saveAddressList(addressDTO _addressDTO);
+    addressDTO saveAddressList(addressDTO _addressDTO);
     
 }

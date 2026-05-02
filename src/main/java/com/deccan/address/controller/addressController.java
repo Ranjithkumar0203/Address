@@ -26,9 +26,9 @@ public class addressController {
     }
 
     @PostMapping("/save")
-    public addressList saveAddress(@RequestBody addressDTO _addressDto) {
-        addressList addresslist = _addressServiceiMPL.saveAddressList(_addressDto);
-        return addresslist;
+    public addressDTO saveAddress(@RequestBody addressDTO _addressDto) {
+        addressDTO address = _addressServiceiMPL.saveAddressList(_addressDto);
+        return address;
     }
 
 }

@@ -22,10 +22,13 @@ private ModelMapper modelMapper;
 
 
     @Override
-    public addressList saveAddressList(addressDTO _addressDTO) {
-        addressList addressLIST =
-                modelMapper.map(_addressDTO, addressList.class);
-        return addressLIST;
+    public addressDTO saveAddressList(addressDTO _addressDTO) {
+        address _address =
+                modelMapper.map(_addressDTO, address.class);
+                _addressEntity.save(_address);
+        addressDTO _addressdto =
+                modelMapper.map(_address, addressDTO.class);
+        return  _addressdto;
     }
 
 }
