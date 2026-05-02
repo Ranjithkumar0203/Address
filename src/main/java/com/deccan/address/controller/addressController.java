@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deccan.address.dto.addressDTO;
 import com.deccan.address.entity.address;
-import com.deccan.address.model.addressList;
 import com.deccan.address.service.serviceImpl.addressServiceiMPL;
 
 import org.springframework.beans.factory.annotation.Autowired;

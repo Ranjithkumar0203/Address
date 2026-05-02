@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.deccan.address.dao.addressEntity;
 import com.deccan.address.dto.addressDTO;
 import com.deccan.address.entity.address;
-import com.deccan.address.model.addressList;
+
 import com.deccan.address.service.addressService;
 
 

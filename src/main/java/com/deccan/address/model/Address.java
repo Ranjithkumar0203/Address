@@ -1,29 +1,10 @@
 package com.deccan.address.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class addressList {
-    private List<Address> addressList = new ArrayList<>();
 
-    public List<Address> getAddressList() {
-        return addressList;
-    }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
 
-    public addressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
-
-    public addressList() {
-    }
-
-}
-
-class Address {
+public class Address {
     private String city;
     private String pincode;
     private String address;
