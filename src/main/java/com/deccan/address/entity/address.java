@@ -1,8 +1,5 @@
 package com.deccan.address.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,14 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "address")
 public class address {
     @Id
-    private Long id;
+    private String id;
     private String city;
     private String pincode;
     private String address;
     private String phoneNumber;
     private String employeeID;
 
-    public address(Long id, String city, String pincode, String address, String phoneNumber, String employeeID) {
+    public address(String id, String city, String pincode, String address, String phoneNumber, String employeeID) {
         this.id = id;
         this.city = city;
         this.pincode = pincode;
@@ -68,13 +65,12 @@ public class address {
 
     public address() {
     }
-    // private List<address> addressList = new ArrayList<>();
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -86,26 +82,4 @@ public class address {
         this.employeeID = employeeID;
     }
 
-    // public Long getId() {
-    //     return id;
-    // }
-
-    // public void setId(Long id) {
-    //     this.id = id;
-    // }
-
-    // public List<address> getAddressList() {
-    //     return addressList;
-    // }
-
-    // public void setAddressList(List<address> addressList) {
-    //     this.addressList = addressList;
-    // }
-
-    // public address(Long id, List<address> addressList) {
-    //     this.id = id;
-    //     this.addressList = addressList;
-    // }
-
-    
 }

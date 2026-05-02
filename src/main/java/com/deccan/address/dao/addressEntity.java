@@ -7,6 +7,6 @@ import com.deccan.address.entity.address;
 
 
 @Repository
-public interface addressEntity  extends MongoRepository<address, Long> {
+public interface addressEntity  extends MongoRepository<address, String> {
     
 }

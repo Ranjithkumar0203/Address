@@ -15,7 +15,7 @@ public class addressDTO {
     // public addressDTO(List<address> addressList) {
     // this.addressList = addressList;
     // }
-    private Long id;
+    private String id;
     private String city;
     private String pincode;
     private String address;
@@ -24,13 +24,21 @@ public class addressDTO {
 
    
 
-    public addressDTO(Long id, String city, String pincode, String address, String phoneNumber, String employeeID) {
+    public addressDTO(String id, String city, String pincode, String address, String phoneNumber, String employeeID) {
         this.id = id;
         this.city = city;
         this.pincode = pincode;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.employeeID = employeeID;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getEmployeeID() {
