@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.deccan.address.dto.EmployeeDTO;
 import com.deccan.address.dto.addressDTO;
 import com.deccan.address.service.serviceImpl.addressServiceiMPL;
 
@@ -35,6 +36,11 @@ public class addressController {
     @GetMapping("/employee/{employeeID}")
     public List<addressDTO> getAddressesByEmployeeID(@PathVariable String employeeID) {
         return _addressServiceiMPL.getAddressesByEmployeeID(employeeID);
+    }
+
+    @GetMapping("/{count}")
+    public EmployeeDTO getEmployeeByMoreThanOneAddress(@PathVariable Long count) {
+        return _addressServiceiMPL.getEmployeeByMoreThanOneAddress(count);
     }
 
 }

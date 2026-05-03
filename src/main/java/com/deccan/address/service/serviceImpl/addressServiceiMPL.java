@@ -6,7 +6,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.deccan.address.client.employeeClient;
 import com.deccan.address.dao.addressEntity;
+import com.deccan.address.dto.EmployeeAddressCountDTO;
+import com.deccan.address.dto.EmployeeDTO;
 import com.deccan.address.dto.addressDTO;
 import com.deccan.address.entity.address;
 
@@ -21,6 +24,9 @@ private addressEntity _addressEntity;
 
 @Autowired
 private ModelMapper modelMapper;
+
+@Autowired
+private employeeClient _employeeClient;
 
 
     @Override
@@ -39,6 +45,14 @@ private ModelMapper modelMapper;
                 .stream()
                 .map(_address -> modelMapper.map(_address, addressDTO.class))
                 .toList();
+    }
+
+    public EmployeeDTO getEmployeeByMoreThanOneAddress(Long count) {
+       
+       EmployeeAddressCountDTO _employeeAdressCountDTO = _addressEntity.findEmployeeIDWithAddressCount(count);               
+               
+       EmployeeDTO employeeDTO = _employeeClient.getEmployeeWithID(Long.valueOf(_employeeAdressCountDTO.getEmployeeID()));
+       return  employeeDTO;
     }
 
 }
