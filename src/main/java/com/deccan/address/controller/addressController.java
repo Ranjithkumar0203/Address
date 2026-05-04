@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deccan.address.dto.EmployeeDTO;
 import com.deccan.address.dto.addressDTO;
+import com.deccan.address.service.addressService;
 import com.deccan.address.service.serviceImpl.addressServiceiMPL;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class addressController {
 
     @Autowired
-    public addressServiceiMPL _addressServiceiMPL;
+    public addressService _addressServiceiMPL;
 
     @GetMapping()
     public String Hello() {
