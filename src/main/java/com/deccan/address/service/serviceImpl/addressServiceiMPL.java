@@ -19,32 +19,28 @@ import com.deccan.address.exception.EmployeeServiceException;
 import com.deccan.address.service.addressService;
 import feign.FeignException;
 
-
 @Service
-public class addressServiceiMPL implements addressService{
-   
-@Autowired
-private addressEntity _addressEntity;
+public class addressServiceiMPL implements addressService {
 
-@Autowired
-private ModelMapper modelMapper;
+    @Autowired
+    private addressEntity _addressEntity;
 
-@Autowired
-private employeeClient _employeeClient;
+    @Autowired
+    private ModelMapper modelMapper;
 
+    @Autowired
+    private employeeClient _employeeClient;
 
     @Override
     public addressDTO saveAddressList(addressDTO _addressDTO) {
-        address _address =
-                modelMapper.map(_addressDTO, address.class);
+        address _address = modelMapper.map(_addressDTO, address.class);
         try {
-                _addressEntity.save(_address);
+            _addressEntity.save(_address);
         } catch (Exception ex) {
             throw new AddressSaveException("Unable to save address", ex);
         }
-        addressDTO _addressdto =
-                modelMapper.map(_address, addressDTO.class);
-        return  _addressdto;
+        addressDTO _addressdto = modelMapper.map(_address, addressDTO.class);
+        return _addressdto;
     }
 
     @Override
@@ -61,21 +57,23 @@ private employeeClient _employeeClient;
         return addresses;
     }
 
-    public EmployeeDTO getEmployeeByMoreThanOneAddress(Long count) {
-       
-       EmployeeAddressCountDTO _employeeAdressCountDTO = _addressEntity.findEmployeeIDWithAddressCount(count);               
+    @Override
+    public List<EmployeeDTO> findEmployeeIDWithAddressCount(Long count) {
+        List<EmployeeAddressCountDTO> employeeAdressCountDTOs = _addressEntity.findEmployeeIDWithAddressCount(count);
 
-       if (_employeeAdressCountDTO == null) {
-           throw new AddressNotFoundException("Address not found with count: " + count);
-       }
+        if (employeeAdressCountDTOs.isEmpty()) {
+            throw new AddressNotFoundException("Address not found with count: " + count);
+        }
 
-       EmployeeDTO employeeDTO;
-       try {
-           employeeDTO = _employeeClient.getEmployeeWithID(Long.valueOf(_employeeAdressCountDTO.getEmployeeID()));
-       } catch (FeignException ex) {
-           throw new EmployeeServiceException("Unable to fetch employee because employee service is not available", ex);
-       }
-       return  employeeDTO;
+        try {
+            return employeeAdressCountDTOs.stream()
+                    .map(employeeAddressCountDTO -> _employeeClient
+                            .getEmployeeWithID(Long.valueOf(employeeAddressCountDTO.getEmployeeID())))
+                    .toList();
+        } catch (FeignException ex) {
+            throw new EmployeeServiceException("Unable to fetch employee because employee service is not available",
+                    ex);
+        }
     }
 
 }

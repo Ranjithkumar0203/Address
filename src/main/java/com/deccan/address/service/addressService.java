@@ -13,6 +13,6 @@ public interface addressService {
 
     List<addressDTO> getAddressesByEmployeeID(String employeeID);
 
-    EmployeeDTO getEmployeeByMoreThanOneAddress(Long count);
+    List<EmployeeDTO> findEmployeeIDWithAddressCount(Long count);
     
 }

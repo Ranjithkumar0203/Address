@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.deccan.address.dto.EmployeeAddressCountDTO;
@@ -22,6 +21,6 @@ public interface addressEntity  extends MongoRepository<address, String> {
     "{ $match: { addressCount: ?0 } }",
     "{ $project: { _id: 0, employeeID: '$_id', addressCount: 1 } }"
 })
-    EmployeeAddressCountDTO findEmployeeIDWithAddressCount(Long count);
+    List<EmployeeAddressCountDTO> findEmployeeIDWithAddressCount(Long count);
     
 }
