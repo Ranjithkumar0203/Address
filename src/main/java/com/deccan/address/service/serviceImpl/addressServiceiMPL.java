@@ -12,9 +12,9 @@ import com.deccan.address.dto.EmployeeAddressCountDTO;
 import com.deccan.address.dto.EmployeeDTO;
 import com.deccan.address.dto.addressDTO;
 import com.deccan.address.entity.address;
-import com.deccan.address.exception.AddressNotFoundException;
-import com.deccan.address.exception.AddressSaveException;
-import com.deccan.address.exception.EmployeeServiceException;
+import com.deccan.common.exception.AddressNotFoundException;
+import com.deccan.common.exception.AddressSaveException;
+import com.deccan.common.exception.EmployeeServiceException;
 
 import com.deccan.address.service.addressService;
 import feign.FeignException;
