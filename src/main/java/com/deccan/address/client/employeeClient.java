@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.deccan.address.dto.EmployeeDTO;
 
-@FeignClient(name = "employee-service", url = "${employee.service.url}")
+@FeignClient(name = "employees")
 public interface employeeClient {
     @GetMapping("/employees/{id}")
     public EmployeeDTO getEmployeeWithID(@PathVariable Long id);
