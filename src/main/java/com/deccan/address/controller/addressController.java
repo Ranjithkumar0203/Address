@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deccan.address.dto.EmployeeDTO;
 import com.deccan.address.dto.addressDTO;
-import com.deccan.address.service.serviceImpl.addressServiceiMPL;
+import com.deccan.address.service.addressService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class addressController {
 
     @Autowired
-    public addressServiceiMPL _addressServiceiMPL;
+    public addressService _addressService;
 
     @GetMapping()
     public String Hello() {
@@ -29,18 +29,18 @@ public class addressController {
 
     @PostMapping("/save")
     public addressDTO saveAddress(@RequestBody addressDTO _addressDto) {
-        addressDTO address = _addressServiceiMPL.saveAddressList(_addressDto);
+        addressDTO address = _addressService.saveAddressList(_addressDto);
         return address;
     }
 
     @GetMapping("/employee/{employeeID}")
     public List<addressDTO> getAddressesByEmployeeID(@PathVariable String employeeID) {
-        return _addressServiceiMPL.getAddressesByEmployeeID(employeeID);
+        return _addressService.getAddressesByEmployeeID(employeeID);
     }
 
     @GetMapping("/{count}")
-    public EmployeeDTO getEmployeeByMoreThanOneAddress(@PathVariable Long count) {
-        return _addressServiceiMPL.getEmployeeByMoreThanOneAddress(count);
+    public List<EmployeeDTO> getEmployeeByMoreThanOneAddress(@PathVariable Long count) {
+        return _addressService.findEmployeeIDWithAddressCount(count);
     }
 
 }
